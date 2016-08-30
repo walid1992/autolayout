@@ -25,7 +25,7 @@ android 屏幕适配最佳实践，极大的减少开发成本，直接拿着设
 1、引用方式：
 
 ```
-compile 'com.walid:autolayout:1.0.3'
+compile 'com.walid:autolayout:1.0.4'
 ```
 
 2、application初始化
