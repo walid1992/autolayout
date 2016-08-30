@@ -26,5 +26,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.0'
     testCompile 'junit:junit:4.12'
+    compile 'de.hdodenhof:circleimageview:2.0.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
     compile project(':autolayout')
 }

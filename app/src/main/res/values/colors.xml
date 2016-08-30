@@ -3,4 +3,19 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="col_theme">#0092ff</color>
+    <color name="col_666666">#666666</color>
+    <color name="col_999999">#999999</color>
+    <color name="col_bbbbbb">#bbbbbb</color>
+    <color name="col_dadada">#dadada</color>
+    <color name="col_f0f0f0">#f0f0f0</color>
+    <!-- walid start -->
+    <color name="col_333333">#333333</color>
+    <color name="col_111111">#111111</color>
+    <color name="col_ffae00">#ffae00</color>
+    <color name="col_ffe5ad">#ffe5ad</color>
+    <color name="col_ff8400">#ff8400</color>
+    <color name="col_ff0000">#ff0000</color>
+
 </resources>
