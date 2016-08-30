@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        minSdkVersion 11
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:24.2.0'
+    compile "com.android.support:recyclerview-v7:24.2.0"
+}
+
+//添加
+publish {
+    userOrg = 'walid1992'//bintray.com用户名
+    groupId = 'com.walid'//jcenter上的路径
+    artifactId = 'autolayout'//项目名称
+    publishVersion = '1.0.4'//版本号
+    desc = ' The android screen adaptation the best solution '//描述
+    website = 'https://github.com/walid1992/autolayoutsample'//网站，不重要,尽量模拟github上的地址
+}
