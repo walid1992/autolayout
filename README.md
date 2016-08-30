@@ -75,13 +75,13 @@ public class MainActivity extends AppCompatActivity {
 
 #### 其他信息 ##
 
- 作者信息 ：
+作者信息 ：
 
-    [walid](https://github.com/walid1992)
+[walid](https://github.com/walid1992)
 
 非常感谢 ：
 
-    [张鸿洋老师 AndroidAutoLayout](https://github.com/hongyangAndroid/AndroidAutoLayout)
+[张鸿洋老师 AndroidAutoLayout](https://github.com/hongyangAndroid/AndroidAutoLayout)
 
 
 
