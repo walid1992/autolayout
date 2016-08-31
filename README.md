@@ -25,7 +25,7 @@ android 屏幕适配最佳实践，极大的减少开发成本，直接拿着设
 1、引用方式：
 
 ```
-compile 'com.walid:autolayout:1.0.4'
+compile 'com.walid:autolayout:1.0.6'
 ```
 
 2、application初始化
@@ -70,6 +70,101 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onCreateView(name, context, attrs);
     }
+}
+```
+
+三、扩展
+
+1、扩展控件：实现generateLayoutParams、onMeasure方法
+
+```
+public class AutoRadioGroup extends RadioGroup {
+
+    public AutoRadioGroup(Context context) {
+        super(context);
+    }
+
+    public AutoRadioGroup(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+        return new LayoutParams(getContext(), attrs);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        if (!isInEditMode()) {
+            AutoUtils.autoLayoutAdjustChildren(this);
+        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    class LayoutParams extends RadioGroup.LayoutParams implements AutoUtils.AutoLayoutParams {
+
+        private AutoLayoutInfo autoLayoutInfo;
+
+        LayoutParams(Context c, AttributeSet attrs) {
+            super(c, attrs);
+            autoLayoutInfo = AutoUtils.getAutoLayoutInfo(c, attrs);
+        }
+
+        @Override
+        public AutoLayoutInfo getAutoLayoutInfo() {
+            return autoLayoutInfo;
+        }
+
+    }
+}
+```
+
+2、自定义控件：继承Auto***Layout
+
+```
+public class CommonCell extends AutoRelativeLayout {
+
+    @Bind(R.id.tv_left_item)
+    TextView tvLeftItem;
+    @Bind(R.id.tv_right_item)
+    TextView tvRightItem;
+    @Bind(R.id.iv_right_item)
+    ImageView ivRightItem;
+    @Bind(R.id.rl_right_item)
+    RelativeLayout rlRightItem;
+    @Bind(R.id.rl_cell)
+    RelativeLayout rlCell;
+
+    public CommonCell(Context context) {
+        super(context);
+    }
+
+    public CommonCell(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.widget_common_cell, this);
+        ButterKnife.bind(this, view);
+        updateStyle(context, attrs);
+    }
+
+    private void updateStyle(Context context, AttributeSet attrs) {
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CommonCell);
+        String leftItem = a.getString(R.styleable.CommonCell_CommonCell_tv_left_item);
+        String rightItem = a.getString(R.styleable.CommonCell_CommonCell_tv_right_item);
+        a.recycle();
+        setTvLeftItem(leftItem);
+        setTvRightItem(rightItem);
+    }
+
+    public void setTvLeftItem(String content) {
+        tvLeftItem.setText(content);
+    }
+
+    public void setTvRightItem(String content) {
+        tvRightItem.setText(content);
+        tvRightItem.setVisibility(TextUtils.isEmpty(content) ? GONE : VISIBLE);
+    }
+
 }
 ```
 
