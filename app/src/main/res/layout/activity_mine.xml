@@ -9,12 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.walid.autolayout.view.AutoLinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.walid.autolayout.view.AutoRelativeLayout
+            <RelativeLayout
                 android:id="@+id/mine_title_frame"
                 android:layout_width="match_parent"
                 android:layout_height="180px"
@@ -42,7 +42,7 @@
                     android:text="未登录"
                     android:textColor="@android:color/white"
                     android:textSize="32px" />
-            </com.walid.autolayout.view.AutoRelativeLayout>
+            </RelativeLayout>
 
             <com.walid.sample.widget.CommonCell
                 android:id="@+id/commoncell_mine_plant"
@@ -110,7 +110,7 @@
                 android:textColor="@color/col_111111"
                 android:textSize="32px" />
 
-            <com.walid.autolayout.view.AutoLinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30px"
@@ -135,9 +135,9 @@
                     android:textColor="@color/col_999999"
                     android:textSize="24px" />
 
-            </com.walid.autolayout.view.AutoLinearLayout>
+            </LinearLayout>
 
-        </com.walid.autolayout.view.AutoLinearLayout>
+        </LinearLayout>
 
     </ScrollView>
 </RelativeLayout>

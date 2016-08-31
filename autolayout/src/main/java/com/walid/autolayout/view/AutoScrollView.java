@@ -2,7 +2,7 @@ package com.walid.autolayout.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import com.walid.autolayout.utils.AutoLayoutInfo;
 import com.walid.autolayout.utils.AutoLayoutUtils;
@@ -12,17 +12,17 @@ import com.walid.autolayout.utils.AutoLayoutUtils;
  * Data     : 2016-08-30  16:21
  * Describe :
  */
-public class AutoLinearLayout extends LinearLayout {
+public class AutoScrollView extends ScrollView {
 
-    public AutoLinearLayout(Context context) {
+    public AutoScrollView(Context context) {
         super(context);
     }
 
-    public AutoLinearLayout(Context context, AttributeSet attrs) {
+    public AutoScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public AutoLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public AutoScrollView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -44,7 +44,7 @@ public class AutoLinearLayout extends LinearLayout {
         return new LayoutParams(getContext(), attrs);
     }
 
-    class LayoutParams extends LinearLayout.LayoutParams implements AutoLayoutUtils.AutoLayoutParams {
+    class LayoutParams extends ScrollView.LayoutParams implements AutoLayoutUtils.AutoLayoutParams {
 
         private AutoLayoutInfo autoLayoutInfo;
 

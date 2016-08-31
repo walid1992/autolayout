@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.walid.autolayout.AutoLayoutInfo;
 import com.walid.autolayout.attr.HeightAttr;
 import com.walid.autolayout.attr.MarginAttr;
 import com.walid.autolayout.attr.MarginBottomAttr;
@@ -31,6 +30,7 @@ import com.walid.autolayout.view.AutoLinearLayout;
 import com.walid.autolayout.view.AutoRadioGroup;
 import com.walid.autolayout.view.AutoRecycleView;
 import com.walid.autolayout.view.AutoRelativeLayout;
+import com.walid.autolayout.view.AutoScrollView;
 
 /**
  * Author   : walid
@@ -44,7 +44,7 @@ public class AutoLayoutUtils {
     private static final String LAYOUT_RELATIVELAYOUT = "RelativeLayout";
     private static final String LAYOUT_RECYCLERVIEW = "android.support.v7.widget.RecyclerView";
     private static final String LAYOUT_RADIOGROUP = "RadioGroup";
-
+    private static final String LAYOUT_SCROLLVIEW = "ScrollView";
 
     private static final int[] LL = new int[]{
             android.R.attr.textSize,
@@ -66,7 +66,6 @@ public class AutoLayoutUtils {
             android.R.attr.minHeight,//16843072
     };
 
-    private final ViewGroup host;
     private static final int INDEX_TEXT_SIZE = 0;
     private static final int INDEX_PADDING = 1;
     private static final int INDEX_PADDING_LEFT = 2;
@@ -85,23 +84,42 @@ public class AutoLayoutUtils {
     private static final int INDEX_MIN_WIDTH = 15;
     private static final int INDEX_MIN_HEIGHT = 16;
 
-    public AutoLayoutUtils(ViewGroup host) {
-        this.host = host;
-    }
-
-    public void adjustChildren() {
+    public static void adjustChildren(View view) {
         AutoLayoutConifg.getInstance().checkParams();
-        for (int i = 0, n = host.getChildCount(); i < n; i++) {
-            View view = host.getChildAt(i);
-            ViewGroup.LayoutParams params = view.getLayoutParams();
-            if (params instanceof AutoLayoutParams) {
-                AutoLayoutInfo info = ((AutoLayoutParams) params).getAutoLayoutInfo();
-                if (info != null) {
-                    info.fillAttrs(view);
-                }
+        initParams(view);
+        if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            int childCount = viewGroup.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                adjustChildren(viewGroup.getChildAt(i));
             }
         }
     }
+
+    private static void initParams(View view) {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (params instanceof AutoLayoutParams) {
+            AutoLayoutInfo info = ((AutoLayoutParams) params).getAutoLayoutInfo();
+            if (info != null) {
+                info.fillAttrs(view);
+            }
+        }
+    }
+
+//    public static void adjustChildren(ViewGroup host) {
+//        AutoLayoutConifg.getInstance().checkParams();
+//        int count = host.getChildCount();
+//        for (int i = 0; i < count; i++) {
+//            View view = host.getChildAt(i);
+//            ViewGroup.LayoutParams params = view.getLayoutParams();
+//            if (params instanceof AutoLayoutParams) {
+//                AutoLayoutInfo info = ((AutoLayoutParams) params).getAutoLayoutInfo();
+//                if (info != null) {
+//                    info.fillAttrs(view);
+//                }
+//            }
+//        }
+//    }
 
     public static AutoLayoutInfo getAutoLayoutInfo(Context context, AttributeSet attrs) {
         AutoLayoutInfo info = new AutoLayoutInfo();
@@ -194,6 +212,9 @@ public class AutoLayoutUtils {
                 break;
             case LAYOUT_RADIOGROUP:
                 view = new AutoRadioGroup(context, attrs);
+                break;
+            case LAYOUT_SCROLLVIEW:
+                view = new AutoScrollView(context, attrs);
                 break;
         }
         return view;

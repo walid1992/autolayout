@@ -3,7 +3,7 @@ package com.walid.autolayout.attr;
 import android.support.annotation.IntDef;
 import android.view.View;
 
-import com.walid.autolayout.utils.AutoUtils;
+import com.walid.autolayout.utils.ScreenUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -38,9 +38,9 @@ public abstract class AutoAttr {
     public void apply(View view) {
         int val;
         if (baseParams == BaseParams.WIDTH) {
-            val = (int) AutoUtils.getRealPxByWidth(pxVal);
+            val = (int) ScreenUtils.getRealPxByWidth(pxVal);
         } else {
-            val = (int) AutoUtils.getRealPxByHeight(pxVal);
+            val = (int) ScreenUtils.getRealPxByHeight(pxVal);
         }
 
         if (val > 0) {

@@ -20,8 +20,14 @@ public class AutoLayoutConifg {
     private int screenHeight;
 
     private AutoLayoutConifg() {
-        designWidth = 640;
-        designHeight = 1136;
+    }
+
+    private static class SingletonHolder {
+        static AutoLayoutConifg instance = new AutoLayoutConifg();
+    }
+
+    public static AutoLayoutConifg getInstance() {
+        return SingletonHolder.instance;
     }
 
     public void initConfig(Context context, int width, int height) {
@@ -35,14 +41,6 @@ public class AutoLayoutConifg {
         this.screenWidth = size.getWidth();
         this.screenHeight = size.getHeight();
         Log.d("AutoLayoutConifg", " screenWidth =" + screenWidth + " ,screenHeight = " + screenHeight);
-    }
-
-    private static class SingletonHolder {
-        static AutoLayoutConifg instance = new AutoLayoutConifg();
-    }
-
-    public static AutoLayoutConifg getInstance() {
-        return SingletonHolder.instance;
     }
 
     public int getScreenWidth() {

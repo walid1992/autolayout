@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
-import com.walid.autolayout.AutoLayoutInfo;
+import com.walid.autolayout.utils.AutoLayoutInfo;
 import com.walid.autolayout.utils.AutoLayoutUtils;
 
 /**
@@ -13,8 +13,6 @@ import com.walid.autolayout.utils.AutoLayoutUtils;
  * Describe :
  */
 public class AutoRecycleView extends RecyclerView {
-
-    private final AutoLayoutUtils helper = new AutoLayoutUtils(this);
 
     public AutoRecycleView(Context context) {
         super(context);
@@ -36,7 +34,7 @@ public class AutoRecycleView extends RecyclerView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (!isInEditMode()) {
-            helper.adjustChildren();
+            AutoLayoutUtils.adjustChildren(this);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }

@@ -3,7 +3,9 @@ package com.walid.autolayout.utils;
 import android.util.TypedValue;
 
 /**
- * Created by walid on 16/8/12.
+ * Author   : walid
+ * Data     : 2016-08-31  12:05
+ * Describe :
  */
 public class DimenUtils {
 

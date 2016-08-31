@@ -9,13 +9,34 @@ import android.view.Display;
 import android.view.WindowManager;
 
 import com.walid.autolayout.bean.ScreenSize;
+import com.walid.autolayout.config.AutoLayoutConifg;
 
 /**
- * Created by walid on 16/8/12.
+ * Author   : walid
+ * Data     : 2016-08-31  11:33
+ * Describe :
  */
 public class ScreenUtils {
 
     private static final String TAG = "ScreenUtils";
+
+    public static float getRealPxByWidth(float pxValue) {
+//        if (Float.isNaN(pxValue)) {
+//            return pxValue;
+//        }
+        AutoLayoutConifg conifg = AutoLayoutConifg.getInstance();
+        float realPx = (pxValue * conifg.getScreenWidth() / conifg.getDesignWidth());
+        return realPx > 0.005 && realPx < 1 ? 1 : (float) Math.rint(realPx);
+    }
+
+    public static float getRealPxByHeight(float pxValue) {
+//        if (Float.isNaN(pxValue)) {
+//            return pxValue;
+//        }
+        AutoLayoutConifg conifg = AutoLayoutConifg.getInstance();
+        float realPx = (pxValue * conifg.getScreenHeight() / conifg.getDesignHeight());
+        return realPx > 0.005 && realPx < 1 ? 1 : (float) Math.rint(realPx);
+    }
 
     public static int getStatusBarHeight(Context context) {
         int result = 0;

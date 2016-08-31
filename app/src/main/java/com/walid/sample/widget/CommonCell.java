@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.walid.autolayout.view.AutoRelativeLayout;
 import com.walid.sample.R;
 
 import butterknife.Bind;
@@ -32,7 +31,7 @@ public class CommonCell extends RelativeLayout {
     @Bind(R.id.rl_right_item)
     RelativeLayout rlRightItem;
     @Bind(R.id.rl_cell)
-    AutoRelativeLayout rlCell;
+    RelativeLayout rlCell;
 
     public CommonCell(Context context) {
         super(context);

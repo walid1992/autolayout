@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RadioGroup;
 
-import com.walid.autolayout.AutoLayoutInfo;
+import com.walid.autolayout.utils.AutoLayoutInfo;
 import com.walid.autolayout.utils.AutoLayoutUtils;
 
 /**
@@ -14,8 +14,6 @@ import com.walid.autolayout.utils.AutoLayoutUtils;
  */
 
 public class AutoRadioGroup extends RadioGroup {
-
-    private final AutoLayoutUtils helper = new AutoLayoutUtils(this);
 
     public AutoRadioGroup(Context context) {
         super(context);
@@ -33,7 +31,7 @@ public class AutoRadioGroup extends RadioGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (!isInEditMode()) {
-            helper.adjustChildren();
+            AutoLayoutUtils.adjustChildren(this);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }

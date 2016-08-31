@@ -15,6 +15,6 @@ public class WalidApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        AutoLayoutConifg.getInstance().initConfig(this, 640, 1135);
+        AutoLayoutConifg.getInstance().initConfig(this, 640, 1136);
     }
 }

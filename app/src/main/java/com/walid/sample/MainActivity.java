@@ -25,4 +25,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onCreateView(name, context, attrs);
     }
+
 }
