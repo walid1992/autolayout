@@ -34,7 +34,7 @@ publish {
     userOrg = 'walid1992'//bintray.com用户名
     groupId = 'com.walid'//jcenter上的路径
     artifactId = 'autolayout'//项目名称
-    publishVersion = '1.0.4'//版本号
+    publishVersion = '1.0.5'//版本号
     desc = ' The android screen adaptation the best solution '//描述
     website = 'https://github.com/walid1992/autolayoutsample'//网站，不重要,尽量模拟github上的地址
 }

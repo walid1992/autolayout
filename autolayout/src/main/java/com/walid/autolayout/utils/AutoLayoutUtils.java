@@ -28,9 +28,7 @@ import com.walid.autolayout.config.AutoLayoutConifg;
 import com.walid.autolayout.view.AutoFrameLayout;
 import com.walid.autolayout.view.AutoLinearLayout;
 import com.walid.autolayout.view.AutoRadioGroup;
-import com.walid.autolayout.view.AutoRecycleView;
 import com.walid.autolayout.view.AutoRelativeLayout;
-import com.walid.autolayout.view.AutoScrollView;
 
 /**
  * Author   : walid
@@ -207,15 +205,15 @@ public class AutoLayoutUtils {
             case LAYOUT_RELATIVELAYOUT:
                 view = new AutoRelativeLayout(context, attrs);
                 break;
-            case LAYOUT_RECYCLERVIEW:
-                view = new AutoRecycleView(context, attrs);
-                break;
+//            case LAYOUT_RECYCLERVIEW:
+//                view = new AutoRecycleView(context, attrs);
+//                break;
             case LAYOUT_RADIOGROUP:
                 view = new AutoRadioGroup(context, attrs);
                 break;
-            case LAYOUT_SCROLLVIEW:
-                view = new AutoScrollView(context, attrs);
-                break;
+//            case LAYOUT_SCROLLVIEW:
+//                view = new AutoScrollView(context, attrs);
+//                break;
         }
         return view;
     }
