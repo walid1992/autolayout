@@ -2,11 +2,14 @@ package com.walid.autolayout.utils;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.StringDef;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.walid.autolayout.R;
+import com.walid.autolayout.attr.Attrs;
 import com.walid.autolayout.attr.HeightAttr;
 import com.walid.autolayout.attr.MarginAttr;
 import com.walid.autolayout.attr.MarginBottomAttr;
@@ -30,19 +33,26 @@ import com.walid.autolayout.view.AutoLinearLayout;
 import com.walid.autolayout.view.AutoRadioGroup;
 import com.walid.autolayout.view.AutoRelativeLayout;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * Author   : walid
  * Data     : 2016-08-30  16:21
  * Describe :
  */
-public class AutoLayoutUtils {
+public class AutoUtils {
 
-    private static final String LAYOUT_LINEARLAYOUT = "LinearLayout";
-    private static final String LAYOUT_FRAMELAYOUT = "FrameLayout";
-    private static final String LAYOUT_RELATIVELAYOUT = "RelativeLayout";
-    private static final String LAYOUT_RECYCLERVIEW = "android.support.v7.widget.RecyclerView";
-    private static final String LAYOUT_RADIOGROUP = "RadioGroup";
-    private static final String LAYOUT_SCROLLVIEW = "ScrollView";
+
+    @StringDef({AutoViewType.LINEARLAYOUT, AutoViewType.FRAMELAYOUT, AutoViewType.RELATIVELAYOUT, AutoViewType.RADIOGROUP, AutoViewType.SCROLLVIEW})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface AutoViewType {
+        String LINEARLAYOUT = "LinearLayout";
+        String FRAMELAYOUT = "FrameLayout";
+        String RELATIVELAYOUT = "RelativeLayout";
+        String RADIOGROUP = "RadioGroup";
+        String SCROLLVIEW = "ScrollView";
+    }
 
     private static final int[] LL = new int[]{
             android.R.attr.textSize,
@@ -82,19 +92,11 @@ public class AutoLayoutUtils {
     private static final int INDEX_MIN_WIDTH = 15;
     private static final int INDEX_MIN_HEIGHT = 16;
 
-    public static void adjustChildren(View view) {
+    public static void autoLayoutAdjustChildren(View view) {
         AutoLayoutConifg.getInstance().checkParams();
-        initParams(view);
-        if (view instanceof ViewGroup) {
-            ViewGroup viewGroup = (ViewGroup) view;
-            int childCount = viewGroup.getChildCount();
-            for (int i = 0; i < childCount; i++) {
-                adjustChildren(viewGroup.getChildAt(i));
-            }
+        if (view == null) {
+            return;
         }
-    }
-
-    private static void initParams(View view) {
         ViewGroup.LayoutParams params = view.getLayoutParams();
         if (params instanceof AutoLayoutParams) {
             AutoLayoutInfo info = ((AutoLayoutParams) params).getAutoLayoutInfo();
@@ -102,22 +104,64 @@ public class AutoLayoutUtils {
                 info.fillAttrs(view);
             }
         }
+        if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            int childCount = viewGroup.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                autoLayoutAdjustChildren(viewGroup.getChildAt(i));
+            }
+        }
     }
 
-//    public static void adjustChildren(ViewGroup host) {
-//        AutoLayoutConifg.getInstance().checkParams();
-//        int count = host.getChildCount();
-//        for (int i = 0; i < count; i++) {
-//            View view = host.getChildAt(i);
-//            ViewGroup.LayoutParams params = view.getLayoutParams();
-//            if (params instanceof AutoLayoutParams) {
-//                AutoLayoutInfo info = ((AutoLayoutParams) params).getAutoLayoutInfo();
-//                if (info != null) {
-//                    info.fillAttrs(view);
-//                }
-//            }
-//        }
-//    }
+    public static void autoInitParams(View view) {
+        if (autoed(view)) {
+            return;
+        }
+        autoSize(view);
+        autoPadding(view);
+        autoMargin(view);
+        autoTextSize(view);
+    }
+
+    public static void autoInitParams(View view, int attrs) {
+        AutoLayoutInfo autoLayoutInfo = AutoLayoutInfo.getAttrFromView(view, attrs);
+        if (autoLayoutInfo != null) {
+            autoLayoutInfo.fillAttrs(view);
+        }
+        if (view instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) view;
+            int childCount = viewGroup.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                autoInitParams(viewGroup.getChildAt(i));
+            }
+        }
+    }
+
+    public static void autoTextSize(View view) {
+        autoInitParams(view, Attrs.TEXTSIZE);
+    }
+
+    public static void autoMargin(View view) {
+        autoInitParams(view, Attrs.MARGIN);
+    }
+
+    public static void autoPadding(View view) {
+        autoInitParams(view, Attrs.PADDING);
+    }
+
+    public static void autoSize(View view) {
+        autoInitParams(view, Attrs.WIDTH | Attrs.HEIGHT);
+    }
+
+    //  判断是否auto
+    public static boolean autoed(View view) {
+        Object tag = view.getTag(R.id.id_tag_autolayout_size);
+        if (tag != null) {
+            return true;
+        }
+        view.setTag(R.id.id_tag_autolayout_size, "Just Identify");
+        return false;
+    }
 
     public static AutoLayoutInfo getAutoLayoutInfo(Context context, AttributeSet attrs) {
         AutoLayoutInfo info = new AutoLayoutInfo();
@@ -189,29 +233,25 @@ public class AutoLayoutUtils {
             }
         }
         array.recycle();
-        Log.d("AutoLayoutUtils", " getAutoLayoutInfo " + info.toString());
         return info;
     }
 
     public static View genAutoView(String name, Context context, AttributeSet attrs) {
         View view = null;
         switch (name) {
-            case LAYOUT_FRAMELAYOUT:
+            case AutoViewType.FRAMELAYOUT:
                 view = new AutoFrameLayout(context, attrs);
                 break;
-            case LAYOUT_LINEARLAYOUT:
+            case AutoViewType.LINEARLAYOUT:
                 view = new AutoLinearLayout(context, attrs);
                 break;
-            case LAYOUT_RELATIVELAYOUT:
+            case AutoViewType.RELATIVELAYOUT:
                 view = new AutoRelativeLayout(context, attrs);
                 break;
-//            case LAYOUT_RECYCLERVIEW:
-//                view = new AutoRecycleView(context, attrs);
-//                break;
-            case LAYOUT_RADIOGROUP:
+            case AutoViewType.RADIOGROUP:
                 view = new AutoRadioGroup(context, attrs);
                 break;
-//            case LAYOUT_SCROLLVIEW:
+//            case AutoViewType.SCROLLVIEW:
 //                view = new AutoScrollView(context, attrs);
 //                break;
         }

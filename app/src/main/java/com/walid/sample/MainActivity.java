@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.walid.autolayout.utils.AutoLayoutUtils;
+import com.walid.autolayout.utils.AutoUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
-        View view = AutoLayoutUtils.genAutoView(name, context, attrs);
+        View view = AutoUtils.genAutoView(name, context, attrs);
         if (view != null) {
             return view;
         }

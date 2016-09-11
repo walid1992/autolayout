@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
 import com.walid.autolayout.utils.AutoLayoutInfo;
-import com.walid.autolayout.utils.AutoLayoutUtils;
+import com.walid.autolayout.utils.AutoUtils;
 
 /**
  * Author   : walid
@@ -34,7 +34,7 @@ public class AutoFrameLayout extends FrameLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (!isInEditMode()) {
-            AutoLayoutUtils.adjustChildren(this);
+            AutoUtils.autoLayoutAdjustChildren(this);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
@@ -44,13 +44,13 @@ public class AutoFrameLayout extends FrameLayout {
         super.onLayout(changed, left, top, right, bottom);
     }
 
-    protected class LayoutParams extends FrameLayout.LayoutParams implements AutoLayoutUtils.AutoLayoutParams {
+    protected class LayoutParams extends FrameLayout.LayoutParams implements AutoUtils.AutoLayoutParams {
 
         private AutoLayoutInfo autoLayoutInfo;
 
         LayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
-            autoLayoutInfo = AutoLayoutUtils.getAutoLayoutInfo(c, attrs);
+            autoLayoutInfo = AutoUtils.getAutoLayoutInfo(c, attrs);
         }
 
         @Override

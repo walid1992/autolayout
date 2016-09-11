@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.ScrollView;
 
 import com.walid.autolayout.utils.AutoLayoutInfo;
-import com.walid.autolayout.utils.AutoLayoutUtils;
+import com.walid.autolayout.utils.AutoUtils;
 
 /**
  * Author   : walid
@@ -29,7 +29,7 @@ public class AutoScrollView extends ScrollView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (!isInEditMode()) {
-            AutoLayoutUtils.adjustChildren(this);
+            AutoUtils.autoLayoutAdjustChildren(this);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
@@ -44,13 +44,13 @@ public class AutoScrollView extends ScrollView {
         return new LayoutParams(getContext(), attrs);
     }
 
-    class LayoutParams extends ScrollView.LayoutParams implements AutoLayoutUtils.AutoLayoutParams {
+    class LayoutParams extends ScrollView.LayoutParams implements AutoUtils.AutoLayoutParams {
 
         private AutoLayoutInfo autoLayoutInfo;
 
         LayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
-            autoLayoutInfo = AutoLayoutUtils.getAutoLayoutInfo(c, attrs);
+            autoLayoutInfo = AutoUtils.getAutoLayoutInfo(c, attrs);
         }
 
         @Override

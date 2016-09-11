@@ -4,7 +4,10 @@ import android.content.Context;
 import android.util.Log;
 
 import com.walid.autolayout.bean.ScreenSize;
+import com.walid.autolayout.utils.AutoUtils;
 import com.walid.autolayout.utils.ScreenUtils;
+
+import java.util.HashMap;
 
 /**
  * Author   : walid

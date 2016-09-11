@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.walid.autolayout.view.AutoRelativeLayout;
 import com.walid.sample.R;
 
 import butterknife.Bind;
@@ -20,7 +21,7 @@ import butterknife.ButterKnife;
  * Data     : 2016-08-23  11:56
  * Describe : common cell 封装
  */
-public class CommonCell extends RelativeLayout {
+public class CommonCell extends AutoRelativeLayout {
 
     @Bind(R.id.tv_left_item)
     TextView tvLeftItem;

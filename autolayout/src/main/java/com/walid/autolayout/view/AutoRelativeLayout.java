@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 import com.walid.autolayout.utils.AutoLayoutInfo;
-import com.walid.autolayout.utils.AutoLayoutUtils;
+import com.walid.autolayout.utils.AutoUtils;
 
 /**
  * Author   : walid
@@ -34,7 +34,7 @@ public class AutoRelativeLayout extends RelativeLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         if (!isInEditMode()) {
-            AutoLayoutUtils.adjustChildren(this);
+            AutoUtils.autoLayoutAdjustChildren(this);
         }
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
@@ -44,13 +44,13 @@ public class AutoRelativeLayout extends RelativeLayout {
         super.onLayout(changed, left, top, right, bottom);
     }
 
-    class LayoutParams extends RelativeLayout.LayoutParams implements AutoLayoutUtils.AutoLayoutParams {
+    class LayoutParams extends RelativeLayout.LayoutParams implements AutoUtils.AutoLayoutParams {
 
         private AutoLayoutInfo autoLayoutInfo;
 
         LayoutParams(Context c, AttributeSet attrs) {
             super(c, attrs);
-            autoLayoutInfo = AutoLayoutUtils.getAutoLayoutInfo(c, attrs);
+            autoLayoutInfo = AutoUtils.getAutoLayoutInfo(c, attrs);
         }
 
         @Override

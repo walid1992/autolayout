@@ -18,8 +18,6 @@ import com.walid.autolayout.config.AutoLayoutConifg;
  */
 public class ScreenUtils {
 
-    private static final String TAG = "ScreenUtils";
-
     public static float getRealPxByWidth(float pxValue) {
 //        if (Float.isNaN(pxValue)) {
 //            return pxValue;

@@ -4,8 +4,6 @@
 *.apk
 *.ap_
 
-
-
 # Generated files
 bin/
 gen/
