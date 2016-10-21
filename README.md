@@ -1,18 +1,20 @@
-##AutoLayoutSample ##
+# 前言
 
-#### 介绍 ##
+android 碎片化非常严重，市面上的机型有几万中之多，导致于android程序员在做屏幕适配时，非常难受，而且把时间浪费在屏幕适配上面也得不偿失，况且还不一定能适配的好，而网络上好的适配方案并不多见，使用上也并不是最佳的，因此草民打算将个人的AutoLayout和大家分享~
 
 android 屏幕适配最佳实践，极大的减少开发成本，直接拿着设计师给量身定做的px，就可以搞定UI适配。
 
-优点：
+# 框架介绍
 
-```
-    1、编写代码简单；
-    2、代码侵入较少；
-    3、适配效果更佳；
-```
+1.编写代码简单
 
-一、效果展示：
+在代码中直接写px进行适配，相信没有比这个更爽的了吧~
+
+<img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_task_xml.png" alt="xml代码样式"/>
+
+2.代码侵入较少；
+
+3.适配效果更佳；
 
 <img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_baby.png" alt="宝贝界面" />
 
@@ -20,25 +22,26 @@ android 屏幕适配最佳实践，极大的减少开发成本，直接拿着设
 
 <img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_mine.png" alt="个人中心" />
 
-二、xml代码样式
+  ...
 
-<img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_task_xml" alt="xml代码样式"/>
+看完上面的说明，想必大家会对autolayout会有所认可~
 
-三、基本使用
 
-1、引用方式：
+# 基本使用
+
+## 引用方式：
 
 ```
 compile 'com.walid:autolayout:1.0.7'
 ```
 
-2、application初始化
+## application初始化
 
 ```
 AutoLayoutConifg.getInstance().initConfig(this, 640, 1136);
 ```
 
-3、activity使用
+## activity 注入Autolayout
 
 方式一 ：继承
 
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-三、扩展
+## 扩展
 
 1、扩展控件：实现generateLayoutParams、onMeasure方法
 
@@ -172,7 +175,7 @@ public class CommonCell extends AutoRelativeLayout {
 }
 ```
 
-#### 其他信息 ##
+# 其他信息
 
 作者信息 ：
 
