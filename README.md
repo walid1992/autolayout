@@ -2,8 +2,6 @@
 
 android 碎片化非常严重，市面上的机型有几万中之多，导致于android程序员在做屏幕适配时，非常难受，而且把时间浪费在屏幕适配上面也得不偿失，况且还不一定能适配的好，而网络上好的适配方案并不多见，使用上也并不是最佳的，因此草民打算将个人的AutoLayout和大家分享~
 
-android 屏幕适配最佳实践，极大的减少开发成本，直接拿着设计师给量身定做的px，就可以搞定UI适配。
-
 # 框架介绍
 
 1.编写代码简单
@@ -129,49 +127,52 @@ public class AutoRadioGroup extends RadioGroup {
 2、自定义控件：继承Auto***Layout
 
 ```
-public class CommonCell extends AutoRelativeLayout {
+public class MartianCell extends AutoRelativeLayout {
 
-    @Bind(R.id.tv_left_item)
-    TextView tvLeftItem;
-    @Bind(R.id.tv_right_item)
-    TextView tvRightItem;
-    @Bind(R.id.iv_right_item)
-    ImageView ivRightItem;
-    @Bind(R.id.rl_right_item)
-    RelativeLayout rlRightItem;
-    @Bind(R.id.rl_cell)
-    RelativeLayout rlCell;
+    private MartianViewHolder viewHolder;
 
-    public CommonCell(Context context) {
+    public MartianCell(Context context) {
         super(context);
     }
 
-    public CommonCell(Context context, AttributeSet attrs) {
+    public MartianCell(Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.widget_common_cell, this);
-        ButterKnife.bind(this, view);
-        updateStyle(context, attrs);
+        viewHolder = new MartianViewHolder(inflater.inflate(R.layout.view_common_cell, this));
+        initStyle(context, attrs);
     }
 
-    private void updateStyle(Context context, AttributeSet attrs) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CommonCell);
-        String leftItem = a.getString(R.styleable.CommonCell_CommonCell_tv_left_item);
-        String rightItem = a.getString(R.styleable.CommonCell_CommonCell_tv_right_item);
+    private void initStyle(Context context, AttributeSet attrs) {
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MartianCell);
+        String leftItem = a.getString(R.styleable.MartianCell_CommonCell_tv_left_item);
+        String rightItem = a.getString(R.styleable.MartianCell_CommonCell_tv_right_item);
         a.recycle();
         setTvLeftItem(leftItem);
         setTvRightItem(rightItem);
     }
 
     public void setTvLeftItem(String content) {
-        tvLeftItem.setText(content);
+        viewHolder.setText(R.id.tv_left_item, content);
     }
 
     public void setTvRightItem(String content) {
-        tvRightItem.setText(content);
-        tvRightItem.setVisibility(TextUtils.isEmpty(content) ? GONE : VISIBLE);
+        viewHolder.setText(R.id.tv_right_item, content);
+        viewHolder.setVisible(R.id.tv_right_item, !TextUtils.isEmpty(content));
     }
 
+    public void setIvRightItem(String url) {
+//        GlideUtils.load(getContext(), viewHolder.getView(R.id.iv_right_item), LoadParams.get(url)
+//                .setStrokeColor(Color.parseColor("#dadada"))
+//                .setError(R.mipmap.ic_place_holder)
+//                .setStrokeWidth(4));
+        viewHolder.setVisible(R.id.iv_right_item, true);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        viewHolder.setVisible(R.id.iv_right_arrow, enabled);
+    }
 }
 ```
 
@@ -192,4 +193,3 @@ CSDN 地址 ：
 非常感谢 ：
 
 [张鸿洋老师 AndroidAutoLayout](https://github.com/hongyangAndroid/AndroidAutoLayout)
-
