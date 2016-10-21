@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_head"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:background="@android:color/white">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="100px"
+                    android:layout_height="100px"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20px"
+                    android:src="@mipmap/ic_avatar"
+                    app:civ_border_color="@android:color/white"
+                    app:civ_border_width="4px"/>
+
+                <LinearLayout
+                    android:id="@+id/rl_user_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20px"
+                    android:layout_toRightOf="@+id/iv_head"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="walid"
+                        android:textColor="@color/col_333333"
+                        android:textSize="32px"/>
+
+                    <TextView
+                        android:id="@+id/tv_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10px"
+                        android:text="185****5412"
+                        android:textColor="@color/col_333333"
+                        android:textSize="24px"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <com.walid.sample.widget.MartianCell
+                android:id="@+id/commoncell_alipay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                app:CommonCell_tv_left_item="支付宝"
+                app:CommonCell_tv_right_item="541290314@qq.com"/>
+
+            <com.walid.sample.widget.MartianCell
+                android:id="@+id/commoncell_wechat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3px"
+                app:CommonCell_tv_left_item="微信"
+                app:CommonCell_tv_right_item="541280314"/>
+
+            <com.walid.sample.widget.MartianCell
+                android:id="@+id/commoncell_qq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3px"
+                app:CommonCell_tv_left_item="QQ"
+                app:CommonCell_tv_right_item="541280314"/>
+
+            <com.walid.sample.widget.MartianCell
+                android:id="@+id/commoncell_csdn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3px"
+                app:CommonCell_tv_left_item="CSDN"
+                app:CommonCell_tv_right_item="walid1992"/>
+
+            <com.walid.sample.widget.MartianCell
+                android:id="@+id/commoncell_jianshu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3px"
+                app:CommonCell_tv_left_item="简书"
+                app:CommonCell_tv_right_item="walid"/>
+
+            <com.walid.sample.widget.MartianCell
+                android:id="@+id/commoncell_gitbub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3px"
+                app:CommonCell_tv_left_item="gitbub"
+                app:CommonCell_tv_right_item="walid1992"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

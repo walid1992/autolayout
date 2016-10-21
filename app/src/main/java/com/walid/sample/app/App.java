@@ -1,6 +1,7 @@
 package com.walid.sample.app;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.walid.autolayout.config.AutoLayoutConifg;
 
@@ -12,9 +13,13 @@ import com.walid.autolayout.config.AutoLayoutConifg;
 
 public class App extends Application {
 
+    public static Context instance;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         AutoLayoutConifg.getInstance().initConfig(this, 640, 1136);
     }
+
 }

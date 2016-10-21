@@ -1,0 +1,14 @@
+<tabs>
+    <tab
+        icon="@mipmap/ic_task"
+        id="@+id/tab_baby"
+        title="好宝贝" />
+    <tab
+        icon="@mipmap/ic_task"
+        id="@+id/tab_task"
+        title="好任务" />
+    <tab
+        icon="@mipmap/ic_mine"
+        id="@+id/tab_mine"
+        title="我的" />
+</tabs>

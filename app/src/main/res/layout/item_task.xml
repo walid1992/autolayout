@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="horizontal"
+    android:paddingLeft="30px"
+    android:paddingRight="30px"
+    android:paddingTop="30px">
+
+    <ImageView
+        android:id="@+id/iv_task"
+        android:layout_width="80px"
+        android:layout_height="80px"
+        android:background="@mipmap/ic_baby"/>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingBottom="30px">
+
+        <TextView
+            android:id="@+id/tv_task_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:textColor="@color/col_333333"
+            android:textSize="32px"/>
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_task_name"
+            android:layout_marginTop="16px"
+            android:textColor="@android:color/holo_red_light"
+            android:textSize="28px"/>
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_task_name"
+            android:layout_marginTop="20px"
+            android:layout_toRightOf="@+id/tv_money"
+            android:text=" 元"
+            android:textColor="@color/col_333333"
+            android:textSize="24px"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1px"
+            android:layout_height="20px"
+            android:layout_below="@+id/tv_task_name"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:layout_marginTop="20px"
+            android:layout_toRightOf="@+id/tv_price"
+            android:background="@color/col_333333"/>
+
+        <TextView
+            android:id="@+id/tv_residue_degree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_task_name"
+            android:layout_marginTop="20px"
+            android:layout_toRightOf="@+id/divider"
+            android:textColor="@color/col_333333"
+            android:textSize="24px"/>
+
+        <TextView
+            android:id="@+id/tv_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_money"
+            android:layout_marginTop="20px"
+            android:textColor="@color/col_333333"
+            android:textSize="24px"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
