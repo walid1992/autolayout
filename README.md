@@ -16,8 +16,6 @@ android 碎片化非常严重，市面上的机型有几万中之多，导致于
 
 <img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_baby.png" alt="宝贝界面" />
 
-<img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_task.png" alt="任务界面" />
-
 <img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_mine.png" alt="个人中心" />
 
   ...
