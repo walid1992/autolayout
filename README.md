@@ -14,15 +14,15 @@ android 屏幕适配最佳实践，极大的减少开发成本，直接拿着设
 
 一、效果展示：
 
-<img src="https://github.com/walid1992/AutoLayout/autolayout_baby.png" alt="宝贝界面" />
+<img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_baby.png" alt="宝贝界面" />
 
-<img src="https://github.com/walid1992/AutoLayout/autolayout_task.png" alt="任务界面" />
+<img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_task.png" alt="任务界面" />
 
-<img src="https://github.com/walid1992/AutoLayout/autolayout_mine.png" alt="个人中心" />
+<img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_mine.png" alt="个人中心" />
 
 二、xml代码样式
 
-<img src="./autolayout_task_xml" alt="xml代码样式"/>
+<img src="https://github.com/walid1992/AutoLayout/blob/master/autolayout_task_xml" alt="xml代码样式"/>
 
 三、基本使用
 
