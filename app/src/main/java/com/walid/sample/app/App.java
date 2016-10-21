@@ -1,4 +1,4 @@
-package com.walid.sample.application;
+package com.walid.sample.app;
 
 import android.app.Application;
 
@@ -10,7 +10,7 @@ import com.walid.autolayout.config.AutoLayoutConifg;
  * Describe :
  */
 
-public class WalidApp extends Application {
+public class App extends Application {
 
     @Override
     public void onCreate() {

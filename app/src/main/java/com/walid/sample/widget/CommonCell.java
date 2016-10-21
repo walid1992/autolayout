@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.walid.autolayout.view.AutoRelativeLayout;
 import com.walid.sample.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -23,15 +23,15 @@ import butterknife.ButterKnife;
  */
 public class CommonCell extends AutoRelativeLayout {
 
-    @Bind(R.id.tv_left_item)
+    @BindView(R.id.tv_left_item)
     TextView tvLeftItem;
-    @Bind(R.id.tv_right_item)
+    @BindView(R.id.tv_right_item)
     TextView tvRightItem;
-    @Bind(R.id.iv_right_item)
+    @BindView(R.id.iv_right_item)
     ImageView ivRightItem;
-    @Bind(R.id.rl_right_item)
+    @BindView(R.id.rl_right_item)
     RelativeLayout rlRightItem;
-    @Bind(R.id.rl_cell)
+    @BindView(R.id.rl_cell)
     RelativeLayout rlCell;
 
     public CommonCell(Context context) {

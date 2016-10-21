@@ -36,5 +36,5 @@ publish {
     artifactId = 'autolayout'//项目名称
     publishVersion = '1.0.7'//版本号
     desc = ' The android screen adaptation the best solution '//描述
-    website = 'https://github.com/walid1992/autolayoutsample'//网站，不重要,尽量模拟github上的地址
+    website = 'https://github.com/walid1992/AutoLayout'//网站，不重要,尽量模拟github上的地址
 }
