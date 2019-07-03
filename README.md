@@ -176,18 +176,6 @@ public class MartianCell extends AutoRelativeLayout {
 
 # 其他信息
 
-作者信息 ：
-
-[walid](https://github.com/walid1992)
-
-CSDN 地址 ：
-
-[逐日-walid](http://blog.csdn.net/walid1992/article)
-
-简书 地址 ：
-
-[walid](http://www.jianshu.com/users/a279a2f8ed63/latest_articles)
-
 非常感谢 ：
 
-[张鸿洋老师 AndroidAutoLayout](https://github.com/hongyangAndroid/AndroidAutoLayout)
+[张鸿洋 AndroidAutoLayout](https://github.com/hongyangAndroid/AndroidAutoLayout)
